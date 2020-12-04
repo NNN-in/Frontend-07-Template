@@ -2,8 +2,10 @@
 
 ## 文档/参考
 
-[Web technology for developers | MDN](https://developer.mozilla.org/en-US/docs/Web)
-[W3C](https://www.w3.org/TR/)
+[Web technology for developers | MDN](https://developer.mozilla.org/en-US/docs/Web) 
+
+[W3C](https://www.w3.org/TR/) 
+
 [Web Hypertext Application Technology Working Group (WHATWG)](https://whatwg.org/)
 
 ## TicTacToe
