@@ -21,3 +21,4 @@
 * setTimeout
 * Promise
 * async/await
+* while(true)
