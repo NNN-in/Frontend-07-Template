@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .signal {
+      display: inline-block;
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      background: #fafafb;
+    }
+    .green.light {
+      background: rgb(0, 185, 0);
+    }
+    .yellow.light {
+      background: yellow;
+    }
+    .red.light {
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="signal green"></div>
+    <div class="signal yellow"></div>
+    <div class="signal red"></div>
+  </div>
+</body>
+<script>
+  const green = document.querySelector('.green');
+  const yellow = document.querySelector('.yellow');
+  const red = document.querySelector('.red');
+  const light = {
+    green, yellow, red
+  }
+  const signal = [].slice.call(document.querySelectorAll('.signal'));
+
+  function change(type) {
+    signal.forEach(item => item.classList.remove('light'));
+    light[type].classList.add('light');
+  }
+
+  function sleep(delay) {
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, delay)
+    })
+  }
+
+  async function go() {
+    while(true) {
+      change('green');
+      await sleep(1000);
+      change('yellow');
+      await sleep(200);
+      change ('red');
+      await sleep(500);
+    }
+  }
+
+  go();
+</script>
+</html>
