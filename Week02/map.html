@@ -28,6 +28,36 @@
   <div id="box" class="box"></div>
 
   <script>
+   
+    class Sorted {
+      constructor(data, compare) {
+        this.data = data.slice(0);
+        this.compare = compare || ((a, b) => a - b);  // 从数组中拿最小
+      }
+
+      take() {
+        if (!this.data.length) return;
+
+        let min = this.data[0];
+        let minIndex = 0;
+
+        for (let i = 1; i < this.data.length; i += 1) {
+          if (this.compare(this.data[i], min) < 0) {
+            min = this.data[i];
+            minIndex = i;
+          }
+        }
+
+        this.data[minIndex] = this.data[this.data.length - 1];
+        this.data.pop();
+        return min
+      }
+
+      give(v) {
+        this.data.push(v)
+      }
+    }
+
     const col = 100;
     const row = 50;
     const box = document.getElementById('box');
@@ -78,14 +108,15 @@
     
     async function findPath(map, start, end) {
       let table = Object.create(map);
-      let queue = [start];
+      let queue = new Sorted([start], (a, b) => distance(a) - distance(b))
 
+      console.log(queue.length)
       async function insert(x, y, pre) {
         if (x < 0 || y < 0 || x >= col || y >= row) return;
 
         if (table[col * y + x]) return;
 
-        // await sleep(30);
+        await sleep(30);
 
         box.children[col * y + x].style.backgroundColor = 'lightgreen';
 
@@ -93,12 +124,15 @@
 
         table[col * y + x] = pre;
 
-        queue.push([x, y]);
+        queue.give([x, y]);
       }
 
-      while(queue.length) {
-        let [x, y] = queue.shift();
-        // console.log(x, y);
+      function distance(point) {
+        return (point[0] - end[0]) ** 2 + (point[1] - end[1]) ** 2
+      }
+
+      while(queue.data.length) {
+        let [x, y] = queue.take();
         
         if (x === end[0] && y === end[1]) {
 
