@@ -1,4 +1,6 @@
-学习笔记
+# 学习笔记
+
+<img src="./img.png">
 
 * AST抽象语法树  LL left left算法
 * `function*`生成器函数，可以用`for...of`迭代自动调用生成器的`next`方法
