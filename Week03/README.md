@@ -1,8 +1,9 @@
 学习笔记
 
+![](./img.png)
+
 * AST抽象语法树  LL left left算法
 * `function*`生成器函数，可以用`for...of`迭代自动调用生成器的`next`方法
-
 
 [RegExp.prototype.exec() - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec)
 `exec()` 方法在一个指定字符串中执行一个搜索匹配。返回一个结果数组或`null`。
