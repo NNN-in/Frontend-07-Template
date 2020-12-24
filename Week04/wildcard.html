@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function find(source, pattern) {
+      let starCount = 0;
+      let l = pattern.length;
+
+      // *数量
+      for (let i = 0; i < l; i += 1) {
+        if (pattern[i] === '*') {
+          starCount += 1;
+        }
+      }
+
+      // 没有*
+      if (starCount === 0) {
+        for (let i = 0; i < l; i += 1) {
+          if (source[i] !== pattern[i] && pattern[i] !== '?') {
+            return false;
+          }
+        }
+
+        return;
+      }
+
+
+      let i = 0;
+      let lastIndex = 0;
+
+      // 第一个*前的字符匹配
+      for (; pattern[i] !== '*'; i += 1) {
+        if (source[i] !== pattern[i] && pattern[i] !== '?') {
+            return false;
+          }
+      }
+
+      lastIndex = i;
+
+      for (let j = 0; j < starCount - 1; j += 1) {
+        i += 1;
+
+        let subPattern = '';
+
+        while(pattern[i] !== '*') {
+          subPattern += pattern[i];
+          i += 1;
+        }
+
+        // ? 任意一个字符
+        let reg = new RegExp(subPattern.replace(/\?/g, "[\\s\\S]"), "g");
+        reg.lastIndex = lastIndex;
+
+        console.log(reg.exec(source))
+        if (!reg.exec(source)) return false;
+
+        lastIndex = reg.lastIndex;
+      }
+
+      for (let k = 0; k <= source.length - lastIndex && pattern[l - k] !== '*'; k += 1) {
+        if (pattern[l - k] !== source[source.length - k] && pattern[l - k] !== '?') {
+          return false;
+        }
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>
