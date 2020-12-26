@@ -23,15 +23,9 @@
 
 > D.E.Knuth、V.R.Pratt、J.H.Morris
 
-计算前缀和后缀共有元素的长度
+<img src="./kmp.png">
 
-a b c a b 
-
-0 0 0 1 2
-
-abca 前缀 abc, ab, a 后缀 bca, ca, a,共有元素'a'长度1
-
-abcab 前缀 abca, abc, ab, a 后缀 bcab, cab, ab, b, 共有'ab', 长度2
+计算字符之前的字符串重复的字符数量
 
 ## Wildcard  
 
