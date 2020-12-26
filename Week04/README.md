@@ -29,6 +29,10 @@ a b c a b
 
 0 0 0 1 2
 
+abca 前缀 abc, ab, a 后缀 bca, ca, a,共有元素'a'长度1
+
+abcab 前缀 abca, abc, ab, a 后缀 bcab, cab, ab, b, 共有'ab', 长度2
+
 ## Wildcard  
 
 带通配符的字符串模式
