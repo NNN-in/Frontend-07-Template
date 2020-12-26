@@ -23,6 +23,11 @@
 
 > D.E.Knuth、V.R.Pratt、J.H.Morris
 
+计算前缀和后缀共有元素的长度
+
+a b c a b 
+
+0 0 0 1 2
 
 ## Wildcard  
 
