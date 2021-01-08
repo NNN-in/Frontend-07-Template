@@ -45,8 +45,6 @@
 > 小节练习
 
 ```
-<Expression>::= <AdditiveExpression><EOF>
-
 <AdditiveExpression>::= 
   <MultiplicativeExpression>
   |<AdditiveExpression><+><MultiplicativeExpression>
@@ -57,7 +55,7 @@
   |<MultiplicativeExpression><*><PrimaryExpression>
   |<MultiplicativeExpression></><PrimaryExpression>
 
-<PrimaryExpression>::= (<Expression>) | <Number>
+<PrimaryExpression>::= (<AdditiveExpression>) | <Number>
 ```
 
 ## 语言分类
