@@ -24,7 +24,24 @@
         }, {
           id: 'Symbol'
         }, {
-          id: 'Error'
+          id: 'Error',
+        },{
+          id: 'Native Error',
+          children: [{
+            id: 'EvalError'
+          },{
+            id: 'RangeError'
+          },{
+            id: 'ReferenceError'
+          },{
+            id: 'SyntaxError'
+          },{
+            id: 'TypeError'
+          },{
+            id: 'URIError'
+          },{
+            id: 'InternalError'
+          }]
         }]
       },{
         id: 'Number and Dates',
@@ -47,7 +64,26 @@
         children: [{
           id: 'Array'
         },{
-          id: 'TypedArray'
+          id: 'TypedArray',
+          children: [{
+            id: 'Int8Array'
+          },{
+            id: 'Uint8Array'
+          },{
+            id: 'Uint8ClampedArray'
+          },{
+            id: 'Int16Array'
+          },{
+            id: 'Uint16Array'
+          },{
+            id: 'Int32Array'
+          },{
+            id: 'Uint32Array'
+          },{
+            id: 'Float32Array'
+          },{
+            id: 'Float64Array'
+          }]
         }]
       },{
         id: 'Keyed Collections',
@@ -98,6 +134,46 @@
           id: 'Proxy'
         },{
           id: 'Module Namespace'
+        }]
+      },{
+        id: 'Internationalization',
+        children: [{
+          id: 'Intl'
+        },{
+          id: 'Intl.Collator'
+        },{
+          id: 'Intl.DateTimeFormat'
+        },{
+          id: 'Intl.DisplayNames'
+        },{
+          id: 'Intl.ListFormat'
+        },{
+          id: 'Intl.Locale'
+        },{
+          id: 'Intl.NumberFormat'
+        },{
+          id: 'Intl.PluralRules'
+        },{
+          id: 'Intl.RelativeTimeFormat'
+        }]
+      },{
+        id: 'WebAssembly ',
+        children: [{
+          id: 'WebAssembly'
+        },{
+          id: 'WebAssembly.Module'
+        },{
+          id: 'WebAssembly.Instance'
+        },{
+          id: 'WebAssembly.Memory'
+        },{
+          id: 'WebAssembly.Table'
+        },{
+          id: 'WebAssembly.CompileError'
+        },{
+          id: 'WebAssembly.LinkError'
+        },{
+          id: 'WebAssembly.RuntimeError'
         }]
       }]
     }
