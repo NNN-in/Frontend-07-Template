@@ -225,3 +225,26 @@ Execution Context：
 * LexicalEnvironment
 * VariableEnvironment
 
+
+
+```javascript
+function numberToString(num) {
+  return num.toString();
+
+  // return num + ''
+  // return `${num}`
+}
+
+function stringToNumber(string) {
+  let str = string.replace(/,/g, ''); // 123,000
+
+  return + str;
+
+  // return Number(str)
+  // return str * 1
+}
+```
+
+<img src="./img3.png">
+
+> [How to convert a string to a number in JavaScript](https://flaviocopes.com/how-to-convert-string-to-number-javascript/)
