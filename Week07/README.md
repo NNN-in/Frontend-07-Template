@@ -221,7 +221,7 @@ Execution Context：
 * Function
 * Script or Module
 * Generator Generator函数每次执行所生成的隐藏在背后的Generator，只有Generator函数创建的执行上下文会有该字段
-* Realm
+* Realm 使用的基础库和内置对象实例
 * LexicalEnvironment
 * VariableEnvironment
 
