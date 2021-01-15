@@ -51,6 +51,7 @@
 
     console.log(source)
 
+
     function Expression(tokens) {
       if (source[0].type === 'AdditiveExpression' && source[1] && source[1].type === 'EOF') {
         let node = {
@@ -61,7 +62,6 @@
         return node
       }
       AdditiveExpression(source);
-      console.log(source)
       return Expression(source) 
     }
 
@@ -163,7 +163,7 @@
     }
 
     // AdditiveExpression(source);
-    Expression()
+    // Expression()
   </script>
 </body>
 </html>
