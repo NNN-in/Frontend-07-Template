@@ -1,9 +1,8 @@
 const net = require('net');
-const { threadId } = require('worker_threads');
 
 class Request {
   constructor(options) {
-    const { method = 'GET', host, port = 80, path = '/', headers = {}, body = {} } = options;
+    const { method = 'GET', host = '127.0.0.1', port = 80, path = '/', headers = {}, body = {} } = options;
     this.method = method;
     this.host = host;
     this.port = port;
@@ -20,13 +19,14 @@ class Request {
     } else if (this.headers['Content-Type'] === 'application/x-www-form-urlencoded') {
       this.bodyText = Object.keys(this.body).map(key => `${key}=${encodeURIComponent(this.body[key])}`).join('&');
     }
-
+    
     this.headers['Content-Length'] = this.bodyText.length;
+
   }
 
   send(connection) {
     return new Promise((resolve, reject) => {
-      const parser = new ResponseParser;
+      const parser = new ResponseParser();
       if (connection) {
         connection.write(this.toString())
       } else {
@@ -39,9 +39,10 @@ class Request {
       }
 
       connection.on('data', data => {
-        console.log(data.toString())
+        console.log('data', data.toString())
 
         parser.receive(data.toString());
+
         if (parser.isFinished) {
           resolve(parser.response);
           connection.end();
@@ -49,6 +50,7 @@ class Request {
       });
 
       connection.on('error', err => {
+        console.log('error', err)
         reject(err)
         connection.end();
       })
@@ -57,9 +59,9 @@ class Request {
 
   toString() {
     return `${this.method} ${this.path} HTTP/1.1\r
-    ${Object.keys(this.headers).map(key => `${key}: ${this.headers[key]}`).join('\r\n')}\r
-    \r
-    ${this.bodyText}`
+${Object.keys(this.headers).map(key => `${key}: ${this.headers[key]}`).join('\r\n')}\r
+\r
+${this.bodyText}`
   }
 }
 
@@ -206,9 +208,7 @@ void async function() {
     host: '127.0.0.1',
     port: '8088',
     path: '/',
-    headers: {
-      ['x-f002']: 'custom'
-    },
+    headers: {},
     body: {
       name: 'name'
     }
@@ -216,5 +216,5 @@ void async function() {
 
   let response = await request.send();
   
-  console.log(response)
+  // console.log('response', response)
 }();

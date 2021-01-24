@@ -16,3 +16,5 @@ URL -(HTTP)- html -(parse)- DOM -(CSS computing)- DOM with CSS -(layout)- DOM wi
 
 <img src="./http1.png">
 <img src="./http2.png">
+
+
