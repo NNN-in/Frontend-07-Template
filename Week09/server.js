@@ -11,7 +11,19 @@ http.createServer((request, response) => {
   }).on('end', () => {
     body = Buffer.concat(body).toString();
     response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.end('hello world\n');
+    response.end(
+`<html lang="en">
+<head>
+<style>
+.box {color: #333;}
+</style>
+</head>
+<body>
+  <div class="box">text</div>
+  <input readonly type="text" />
+</body>
+</html>`
+    );
   });
 }).listen(8088);
 
