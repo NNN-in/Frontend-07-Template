@@ -1,4 +1,3 @@
-
 function getStyle(element) {
   if (!element.style) {
     element.style = {};
@@ -132,7 +131,7 @@ function layout(element) {
       let itemStyle = getStyle(item);
 
       if (itemStyle[mainSize] !== null || itemStyle[mainSize] !== (void(0))) {
-        elementStyle[mainSize] = elementStyle[mainSize] + itemStyle[mainSize];
+        elementStyle[mainSize] = elementStyle[mainSize] + itemStyle[mainSize]; // ..
       }
     }
 
@@ -298,12 +297,11 @@ function layout(element) {
       elementStyle[crossSize] = elementStyle[crossSize] + flexLines[i].crossSpace;
     } 
   // } else {
+      crossSpace = style[crossSize];
 
-    crossSpace = style[crossSize];
-
-    for (let i = 0; i < flexLines.length; i += 1) {
-      crossSpace -= flexLines[i].crossSpace;
-    }
+      for (let i = 0; i < flexLines.length; i += 1) {
+        crossSpace -= flexLines[i].crossSpace;
+      }
     
   }
 
