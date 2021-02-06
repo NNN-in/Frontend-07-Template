@@ -15,8 +15,8 @@ http.createServer((request, response) => {
 `<html lang="en">
 <head>
 <style>
-.box {display: flex;background-color: rgb(255,255,255);width: 500px;height: 300px;}
-.box .one {width: 100px;height: 200px;background-color: rgb(0,0,0);}
+.box {display: flex;background-color: rgb(0,0,255);width: 500px;height: 300px;}
+.box .one {width: 100px;height: 200px;background-color: rgb(0,255,0);}
 .box .two {flex: 1;height: 300px;background-color: rgb(255,0,0);}
 </style>
 </head>
