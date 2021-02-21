@@ -1,3 +1,5 @@
+// 因为没带电脑在ipad敲的可能不对，明天回去后会再修改😂
+
 function matchSelector(selectorItem, element) {
   const reg = selectorItem.match(/(#|.)\w+/g);
   const className = element.className ? element.className.splite(' ') : [];
@@ -63,4 +65,3 @@ function match(selector, element) {
 match('div #id.class', document.getElementById('id'));
 
 
-// 因为没带电脑在ipad敲的可能不对，明天回去后会再修改😭
