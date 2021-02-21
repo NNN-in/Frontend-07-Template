@@ -69,6 +69,7 @@ Value
 * ::first-line
 * ::first-letter 相当于给第一个字母括起来
 
+first-line不匹配真实的元素，显示可能会随内容发生变化
 
 
 
