@@ -10,7 +10,7 @@ function getStyle(element) {
     if (element.style[prop].toString().match(/px$/)) {
       element.style[prop] = parseInt(element.style[prop]);
     }
-    if (element.style[prop].toString().match(/^[0-9\.]$/)) {
+    if (element.style[prop].toString().match(/[0-9\.]+$/)) {
       element.style[prop] = parseInt(element.style[prop]);
     }
   }
@@ -110,7 +110,7 @@ function layout(element) {
     crossEnd = 'right';
   }
 
-  if (style.flexDirection === 'wrap-reverse') {
+  if (style.flexWrap === 'wrap-reverse') {
     var tmp = crossStart;
     crossStart = crossEnd;
     crossEnd = tmp;
@@ -131,7 +131,7 @@ function layout(element) {
       var itemStyle = getStyle(item);
 
       if (itemStyle[mainSize] !== null || itemStyle[mainSize] !== (void(0))) {
-        elementStyle[mainSize] = elementStyle[mainSize] + itemStyle[mainSize]; // ..
+        elementStyle[mainSize] = elementStyle[mainSize] + itemStyle[mainSize];
       }
     }
 
@@ -157,7 +157,7 @@ function layout(element) {
     } else if (style.flexWrap === 'nowrap' && isAutoMainSize) {
       mainSpace -= itemStyle[mainSize];
 
-      if (itemStyle[crossSize] !== null && itemStyle[crossSize] !== (void(0))) {
+      if (itemStyle[crossSign] !== null && itemStyle[crossSize] !== (void(0))) {
         crossSpace = Math.max(crossSpace, itemStyle[crossSize]) // 行高最高的 为一行的高度
       }
 
@@ -178,7 +178,7 @@ function layout(element) {
         flexLine.push(item); 
       }
 
-      if (itemStyle[crossSize] !== null && itemStyle[crossSize] !== (void(0))) {
+      if (itemStyle[crossSign] !== null && itemStyle[crossSize] !== (void(0))) {
         crossSpace = Math.max(crossSpace, itemStyle[crossSize]);
       }
 
@@ -373,33 +373,20 @@ function layout(element) {
 
       if (align === 'stretch') {
         itemStyle[crossStart] = crossBase;
-        itemStyle[crossEnd] = crossBase + crossSign * ((itemStyle[crossSize] !== null && itemStyle[crossSize] !== undefined) ? itemStyle[crossSize] : lineCrossSize);
+        itemStyle[crossEnd] = crossBase + crossSign * (
+          (itemStyle[crossSize] !== null && itemStyle[crossSize] !== undefined) 
+            ? itemStyle[crossSize] 
+            : lineCrossSize);
         itemStyle[crossSize] = crossSign * (itemStyle[crossEnd] - itemStyle[crossStart]);
 
       }
     }
     crossBase += crossSign * (lineCrossSize + step);
   });
+
+  console.log(items)
   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports = layout;
