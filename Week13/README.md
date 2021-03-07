@@ -186,7 +186,19 @@ getComputedStyle(document.querySelector('a'), '::before').color;
 * getClientRects()
 * getBoundingClientRect()
   
-  
+## 其他
+
+### 标准化组织
+
+* khronos
+  * WebGL
+* ECMA
+  * ECMAScript
+* WHATWG
+  * HTML
+* W3C
+  * webaudio
+  * CG/WG
   
   
   
