@@ -44,7 +44,7 @@ DOM
 * Document
 * CharacterData
   * Text
-  * CComment
+  * Comment
   * ProessingInstruction
 * DocumentFragment
 * DoumentType
