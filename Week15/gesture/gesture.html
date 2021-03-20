@@ -18,8 +18,8 @@
     import { enableGesture } from './gesture.js';
 
     enableGesture(document.documentElement)
-    document.documentElement.addEventListener('press', () => {
-      console.log('press')
+    document.documentElement.addEventListener('flick', (e) => {
+      console.log('flick', e)
     })
   </script>
 </body>
