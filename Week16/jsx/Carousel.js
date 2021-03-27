@@ -21,11 +21,12 @@ class Carousel extends Component {
     }
 
     enableGesture(this.root);
+
     let timeline = new TimeLine;
     timeline.start();
 
     let children = this.root.children;
-    // let position = 0;
+    
     let t = 0;
     let ax = 0;
     let handler = null;
