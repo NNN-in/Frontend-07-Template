@@ -14,7 +14,6 @@ export class Dispatcher {
   }
 }
 
-
 // listen => recognize => dispatch
 // new Listener(new Recognizer(dispatch))
 
