@@ -21,21 +21,29 @@ module.exports = class extends Generator {
       "description": "",
       "main": "generators/app/index.js",
       "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "webpack",
+        "test": "mocha --require @babel/register",
+        "coverage": "nyc mocha --require @babel/register"
       },
       "author": "",
       "license": "ISC",
       "devDependencies": {
         
+      },
+      "dependencies": {
+
       }
     };
 
     this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
 
-    this.npmInstall(['vue'], { 'save-dev': false });
+    this.npmInstall(['vue', 'mocha', 'nyc'], { 'save-dev': false });
+
     this.npmInstall([
-      'webpack', 'copy-webpack-plugin',
-      'vue-loader', 'vue-template-compiler', 'vue-style-loader', 'css-loader'
+      'webpack', 'webpack-cli', 'copy-webpack-plugin',
+      'vue-loader', 'vue-template-compiler', 'vue-style-loader', 'css-loader',
+      "babel-loader",
+      '@babel/core', '@babel/preset-env', '@babel/register', '@istanbuljs/nyc-config-babel', 'babel-plugin-istanbul'
     ], { 'save-dev': true });
  
     this.fs.copyTpl(
@@ -60,6 +68,24 @@ module.exports = class extends Generator {
       this.templatePath('index.html'),
       this.destinationPath('src/index.html'),
       { title: answer.name }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('.babelrc'),
+      this.destinationPath('.babelrc'),
+      {}
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('.nycrc'),
+      this.destinationPath('.nycrc'),
+      {}
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('sample-test.js'),
+      this.destinationPath('test/sample-test.js'),
+      {}
     );
   }
 
