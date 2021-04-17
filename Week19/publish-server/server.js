@@ -44,6 +44,10 @@ function publish(req, res) {
       if (info.login === 'NNN-in') {
         console.log('success')
         req.pipe(unzipper.Extract({ path: '../server/public/' }));
+
+        req.on('end', function () {
+          res.end('success')
+        })
       }
     })
   }

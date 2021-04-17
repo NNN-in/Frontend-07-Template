@@ -10,8 +10,7 @@ child_progress.exec(`open https://github.com/login/oauth/authorize?client_id=Iv1
 // 3 创建server接受token然后点击发布
 http.createServer(function (req, res) {
   let query = querystring.parse(req.url.match(/^\/\?([\s\S]+)$/)[1]);
-  // console.log(query)
-  publish(query.token)
+  publish(query.token);
 }).listen(8083)
 
 function publish(token) {
@@ -24,7 +23,7 @@ function publish(token) {
       'Content-Type': 'application/octet-stream'
     }
   }, response => {
-    console.log(response)
+    // console.log(response)
   });
 
   const archive = archiver('zip', {
@@ -36,5 +35,6 @@ function publish(token) {
   archive.finalize();
 
   archive.pipe(request);
+
 }
  
