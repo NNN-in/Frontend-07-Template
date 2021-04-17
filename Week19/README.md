@@ -44,3 +44,12 @@ nodejs pipe https://nodejs.org/dist/latest-v14.x/docs/api/stream.html#stream_rea
 pipe 把一个可读的流导入到一个可写的流里面
 
 fs.stat  https://nodejs.org/dist/latest-v14.x/docs/api/fs.html#fs_fs_stat_path_options_callback
+
+## 鉴权
+
+Github oAuth
+
+github -> settings -> Developer settings
+
+https://docs.github.com/en/developers/apps/identifying-and-authorizing-users-for-github-apps
+

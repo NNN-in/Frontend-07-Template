@@ -2,21 +2,10 @@ let http = require('http');
 let fs = require('fs');
 let unzipper = require('unzipper');
 
+// auth路由: 接受code code client_id client_secret -> token
+// 用token获取用户信息检查权限
+// 接受发布
+
 http.createServer(function (req, res) {
-  // console.log(req.headers)
-
-  // let outFile = fs.createWriteStream('../server/public/tmp.zip')
-  // req.pipe(outFile);
-
-
   req.pipe(unzipper.Extract({ path: '../server/public/' }));
-  
-  // req.on('data', chunk => {
-  //   console.log(chunk)
-  //   outFile.write(chunk)
-  // })
-  // req.on('end', () => {
-  //   outFile.end();
-  //   res.end('success')
-  // })
 }).listen(8082)
