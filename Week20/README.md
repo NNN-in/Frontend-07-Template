@@ -1,8 +1,5 @@
 学习笔记
 
-持续集成
-
-
 使用eslint
 
 https://eslint.org/docs/developer-guide/nodejs-api
